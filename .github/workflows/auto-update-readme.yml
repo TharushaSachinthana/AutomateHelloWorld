@@ -16,12 +16,6 @@ jobs:
       - name: Add exclamation mark to README
         run: |
           sed -i "s/Made with ❤️ for learning and automation!!\+/&!/" README.md
-      - name: Commit changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "chore: add ! to README" || echo "No changes to commit"
       - name: Create Pull Request to main
         id: cpr
         uses: peter-evans/create-pull-request@v6
