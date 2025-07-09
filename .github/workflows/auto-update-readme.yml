@@ -9,10 +9,10 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout dev branch
+      - name: Checkout Dev branch
         uses: actions/checkout@v4
         with:
-          ref: dev
+          ref: Dev
       - name: Add exclamation mark to README
         run: |
           sed -i "s/Made with ❤️ for learning and automation!!\+/&!/" README.md
@@ -22,13 +22,13 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
           git commit -m "chore: add ! to README" || echo "No changes to commit"
-          git push origin dev
+          git push origin Dev
       - name: Create Pull Request to main
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore: add ! to README"
-          branch: dev
+          branch: Dev
           base: main
           title: "Automated PR: Add ! to README"
           body: "This PR was created automatically to add an exclamation mark to the README."
